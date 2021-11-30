@@ -8,7 +8,7 @@ export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Get()
-  getStudent(): string {
+  getStudent(): Promise<Student[]> {
     return this.studentService.getStudents();
   }
 

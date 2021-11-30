@@ -8,8 +8,8 @@ import { Student } from './interface/student.interface';
 export class StudentService {
   constructor(@InjectModel('Student') private studentModel: Model<Student>) {}
 
-  getStudents(): string {
-    return 'Student Service';
+  async getStudents(): Promise<Student[]> {
+    return await this.studentModel.find().exec();
   }
 
   async createStudent(student: StudentDTO): Promise<Student> {
