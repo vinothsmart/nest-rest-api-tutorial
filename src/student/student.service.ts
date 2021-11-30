@@ -20,4 +20,10 @@ export class StudentService {
     const newStudent = new this.studentModel(student);
     return await newStudent.save();
   }
+
+  async updateStudent(id: string, student: StudentDTO): Promise<Student> {
+    return await this.studentModel.findByIdAndUpdate({ _id: id }, student, {
+      new: true,
+    });
+  }
 }
