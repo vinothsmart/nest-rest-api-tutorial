@@ -22,8 +22,11 @@ export class StudentService {
   }
 
   async updateStudent(id: string, student: StudentDTO): Promise<Student> {
-    return await this.studentModel.findByIdAndUpdate({ _id: id }, student, {
-      new: true,
-    });
+    const updateStudent = await this.getOneStudent(id);
+    updateStudent.name = student.name;
+    updateStudent.age = student.age;
+    updateStudent.city = student.city;
+    updateStudent.initial = student.initial;
+    return await updateStudent.save();
   }
 }
