@@ -32,4 +32,8 @@ export class StudentService {
     updateStudent.initial = student.initial;
     return await updateStudent.save();
   }
+
+  async deleteOneStudent(id: string): Promise<Student> {
+    return await this.studentModel.findOneAndDelete({ _id: id }).exec();
+  }
 }
