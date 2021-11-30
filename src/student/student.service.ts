@@ -12,6 +12,10 @@ export class StudentService {
     return await this.studentModel.find().exec();
   }
 
+  async getOneStudent(id: string): Promise<Student> {
+    return await this.studentModel.findById(id).exec();
+  }
+
   async createStudent(student: StudentDTO): Promise<Student> {
     const newStudent = new this.studentModel(student);
     return await newStudent.save();
