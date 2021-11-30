@@ -8,8 +8,8 @@ export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Get()
-  getStudent(): Promise<Student[]> {
-    return this.studentService.getStudents();
+  async getStudent(): Promise<Student[]> {
+    return await this.studentService.getStudents();
   }
 
   @Post()
